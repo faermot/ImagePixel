@@ -1,0 +1,122 @@
+﻿<Window x:Class="ImagePixel.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Image Pixelizer"
+        Width="660"
+        Height="500"
+        ResizeMode="NoResize">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="30*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="30*"/>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="30*"/>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="30*"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock FontFamily="Roboto"
+                   FontSize="60" 
+                   Grid.Column="1"
+                   MouseUp="TextBlock_MouseUp"
+>
+            <Bold>Pixelizer</Bold>
+        </TextBlock>
+
+        <Border Grid.Row="1"
+                Grid.RowSpan="3"
+                Grid.Column="1"
+                Background="Black"
+                Padding="2"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center">
+
+            <Viewbox Stretch="Uniform" StretchDirection="Both">
+                <Image x:Name="OriginalImage"
+                       RenderOptions.BitmapScalingMode="NearestNeighbor"
+                       Stretch="None"/>
+            </Viewbox>
+        </Border>
+
+        <Border Grid.Row="1"
+                Grid.RowSpan="3"
+                Grid.Column="3"
+                Background="Black"
+                Padding="2"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center">
+
+            <Viewbox Stretch="Uniform" StretchDirection="Both">
+                <Image x:Name="ChangedImage"
+                       RenderOptions.BitmapScalingMode="NearestNeighbor"
+                       Stretch="None"/>
+            </Viewbox>
+        </Border>
+
+        <Border Grid.Column="3">
+            <StackPanel Margin="10,10,10,10">
+                <TextBlock x:Name="sizeValue">
+                    Степень пикселизации:
+                </TextBlock>
+                <Slider Value="64"
+                        Minimum="0"
+                        Maximum="128"
+                        ValueChanged="Slider_ValueChanged"
+                        IsSelectionRangeEnabled="True"
+                        IsSnapToTickEnabled="True"
+                        TickFrequency="1"/>
+                <CheckBox x:Name="checkBoxOriginalResolution"
+                          Checked="checkBoxOriginalResolution_Checked"
+                          Unchecked="checkBoxOriginalResolution_Unchecked"
+                          Margin="0 10 0 0">
+                    Сохранять исходное разрешение
+                </CheckBox>
+            </StackPanel>
+        </Border>
+
+
+
+        <!-- Выбор файла -->
+        <Border Grid.Row="4"
+                Grid.Column="1">
+            <StackPanel Margin="10,10,10,10">
+                <TextBlock>
+                    Выберите файл:
+                </TextBlock>
+                <Button Content="Выбрать файл"
+                        Margin="0, 10, 0, 0"
+                        x:Name="openFile"
+                        Click="openFile_Click"/>
+            </StackPanel>
+            
+        </Border>
+
+
+        <!-- Сохранение файла -->
+        <Border Grid.Row="4"
+                Grid.Column="3">
+            <StackPanel Margin="10,10,10,10">
+                <TextBlock>
+                    Сохраните файл:
+                </TextBlock>
+                <Button Content="Сохранить файл"
+                        Margin="0, 10, 0, 0"
+                        x:Name="saveFile"
+                        Click="saveFile_Click"/>
+            </StackPanel>
+
+        </Border>
+
+
+        
+        
+    </Grid>
+</Window>

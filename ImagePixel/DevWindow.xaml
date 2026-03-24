@@ -1,0 +1,39 @@
+﻿<Window x:Class="ImagePixel.DevWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ImagePixel"
+        Title="Dev Window" 
+        Height="200" 
+        Width="350"
+        ResizeMode="NoResize">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0"
+                    Grid.RowSpan="2"
+                    VerticalAlignment="Center"
+                    Margin="5 0 0 20">
+            <RadioButton GroupName="Methods" Content="Average" x:Name="AverageRB" Checked="AverageRB_Checked"/>
+            <RadioButton GroupName="Methods" Content="Contrast" x:Name="ContrastRB" Checked="ContrastRB_Checked"/>
+            <RadioButton GroupName="Methods" Content="Experimental" x:Name="ExperimentalRB" Checked="ExperimentalRB_Checked"/>
+        </StackPanel>
+
+
+        <StackPanel Grid.Row="2"
+                    Grid.RowSpan="2"
+                    Background="Gray">
+            <TextBlock >
+                <Bold>Консоль:</Bold>
+            </TextBlock>
+            <TextBlock x:Name="consoleTextBlock" 
+                       Text=" "/>
+        </StackPanel>
+    </Grid>
+</Window>
